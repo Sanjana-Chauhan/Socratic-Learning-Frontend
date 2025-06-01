@@ -17,6 +17,7 @@ const MessageList = ({ messages }) => {
               : 'bg-gray-200 text-gray-800 self-start'
           }`}
         >
+         
           <ReactMarkdown>{msg.text}</ReactMarkdown>
         </div>
       ))}

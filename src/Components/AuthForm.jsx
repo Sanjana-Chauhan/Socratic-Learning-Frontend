@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import Logo from "../../public/logo.png";
+import Logo from "../assets/Logo.png";
 import { useNavigate } from "react-router-dom";
-export default function AuthForm({ formType, onAuthSuccess ,onNewToken}) {
+import { useUser } from "../context/userContext";
+export default function AuthForm({ formType }) {
   const [isSignup, setIsSignup] = useState(formType === "signUp");
   const [formData, setFormData] = useState({
     username: "",
@@ -9,6 +10,7 @@ export default function AuthForm({ formType, onAuthSuccess ,onNewToken}) {
     password: "",
   });
   const navigate=useNavigate();
+  const {login} = useUser();
 
   const formFields = [
     ...(isSignup
@@ -54,12 +56,11 @@ export default function AuthForm({ formType, onAuthSuccess ,onNewToken}) {
 
       const data = await response.json();
       console.log(data);
-      onAuthSuccess(data.userId);
-      onNewToken(data.token);
-      localStorage.setItem("jwt-token", data.token);
+      login(data);
       navigate("/chat");
       
     } catch (err) {
+      alert(isSignup?"Signup Failed":"Login Failed");
       console.log(err);
     }
 
