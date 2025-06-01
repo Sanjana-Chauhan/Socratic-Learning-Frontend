@@ -8,19 +8,21 @@ const Sidebar = ({ conversations, onSelect, onNew }) => {
         💬 Conversations
       </div>
       <button
-        className="m-4 bg-gray-700 text-white px-4 py-2 rounded hover:bg-gray-900"
+        className="m-4 bg-gray-700 text-white px-4 py-2 rounded hover:bg-gray-900 cursor-pointer"
         onClick={onNew}
       >
         + New Chat
       </button>
       <div className="flex-grow overflow-y-auto">
-        {conversations.map((conv) => (
+        {conversations.length===0 && <div className="px-4 py-2bg-gray-300  truncate rounded mx-3">No Conversations</div>}
+        {conversations.length>0 && conversations.map((conv,index) => (
+
           <div
             key={conv.id}
             onClick={() => onSelect(conv.id)}
             className="px-4 py-2 hover:bg-gray-300 cursor-pointer truncate rounded mx-3"
           >
-            {conv.createdAt || `Chat ${index + 1}`}
+            {conv.title + ` ${index + 1}`}
           </div>
         ))}
       </div>

@@ -1,9 +1,13 @@
 // src/Components/MessageList.jsx
-import React from 'react';
+
+import ReactMarkdown from 'react-markdown';
 
 const MessageList = ({ messages }) => {
+  console.log(messages[0]);
   return (
+   
     <div className="flex flex-col space-y-3">
+      
       {messages.map((msg,index) => (
         <div
           key={index}
@@ -13,7 +17,7 @@ const MessageList = ({ messages }) => {
               : 'bg-gray-200 text-gray-800 self-start'
           }`}
         >
-          {msg.text}
+          <ReactMarkdown>{msg.text}</ReactMarkdown>
         </div>
       ))}
     </div>
