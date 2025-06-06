@@ -10,6 +10,7 @@ import ProtectedRoute from "./Components/ProtectedRoute";
 import {jwtDecode} from "jwt-decode"; 
 import useChat from "./hooks/useChat";
 import { useUser } from "./context/userContext";
+import Landing from "./Components/Landing";
 
 const API_BASE = "http://localhost:5125/api";
 
@@ -71,6 +72,10 @@ useEffect(() => {
 
   return (
     <Routes>
+      <Route
+        path="/"
+        element={<Landing />}
+      />
       <Route
         path="/signUp"
         element={<AuthForm formType={"signUp"} onAuthSuccess={setUserId}  />}
