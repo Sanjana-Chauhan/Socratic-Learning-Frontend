@@ -2,7 +2,7 @@ import  { useState, useEffect, useCallback ,useMemo} from "react";
 import { Routes, Route } from "react-router-dom";
 import MessageList from "./Components/MessageList";
 import InputBox from "./Components/InputBox";
-import Sidebar from "./Components/Sidebar";
+import Sidebar from "./Components/SideBar";
 import ChatHeader from "./Components/ChatHeader";
 import ChatContainer from "./Components/ChatContainer";
 import AuthForm from "./Components/AuthForm";
